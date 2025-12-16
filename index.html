@@ -35,30 +35,40 @@
     .search-box input:focus{width:220px;border-color:#8A2BE2;box-shadow:0 0 12px var(--glow)}
     .search-box::before{content:"🔍";position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#b0b0e0;font-size:14px}
     .container{max-width:1300px;margin:0 auto;padding:0 24px}
-    #game-page,#cart,#login,#wishlist{display:none;padding:24px 0}
-    #game-page:target,#cart:target,#login:target,#wishlist:target{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);padding:0 24px}
+    #game-page, #cyberpunk, #eldenring, #starfield, #cart, #login, #wishlist{display:none;padding:24px 0}
+    #game-page:target, #cyberpunk:target, #eldenring:target, #starfield:target, #cart:target, #login:target, #wishlist:target{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);padding:0 24px}
     .home{display:block}
-    #game-page:target~.home,#cart:target~.home,#login:target~.home,#wishlist:target~.home{display:none}
+    #game-page:target~.home, #cyberpunk:target~.home, #eldenring:target~.home, #starfield:target~.home, #cart:target~.home, #login:target~.home, #wishlist:target~.home{display:none}
+
     .hero{text-align:center;margin:40px 0 50px}
     .hero h1{font-size:48px;margin-bottom:16px;background:linear-gradient(90deg,#fff,#a0d0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero p{font-size:18px;max-width:600px;margin:0 auto;color:var(--s)}
     .section-title{font-size:28px;margin:40px 0 24px;background:var(--a);-webkit-background-clip:text;background-clip:text;color:transparent}
+
     .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:26px}
     .game-card{background:var(--g);border:1px solid var(--b);border-radius:20px;padding:18px;transition:all .4s;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(0,0,0,.25);position:relative}
     .game-card:hover{transform:translateY(-6px);border-color:var(--h);box-shadow:0 12px 32px var(--glow)}
     .wishlist-btn{position:absolute;top:12px;right:12px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--b);cursor:pointer;transition:all .3s}
     .wishlist-btn::before{content:"♡";color:#b0b0e0;font-size:18px}
     .wishlist-btn.wished::before{content:"♥";color:#ff4081}
+
     .game-img{width:100%;height:110px;border-radius:16px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:17px;text-align:center;padding:6px}
     .nh{background:linear-gradient(120deg,#ff2a6d,#d400ff)}
     .sf{background:linear-gradient(120deg,#00c9ff,#92fe9d)}
+    .cp{background:linear-gradient(120deg,#ff2a6d,#d53e8f)}
+    .er{background:linear-gradient(120deg,#7a2d0f,#d4af37)}
+    .st{background:linear-gradient(120deg,#1a3a5f,#5d8aa8)}
     .status-badge{position:absolute;bottom:12px;left:12px;background:rgba(0,201,255,.2);border:1px solid rgba(0,201,255,.4);padding:3px 8px;border-radius:12px;font-size:11px;font-weight:700;color:#00c9ff;display:none}
+
     .rating{display:flex;gap:2px;margin:6px 0}
     .star{color:#555;font-size:14px}
     .star.filled{color:#FFD700}
+
     .game-title{font-size:17px;font-weight:700;margin:6px 0;color:var(--t)}
     .price{font-size:19px;font-weight:800;background:var(--a);-webkit-background-clip:text;background-clip:text;color:transparent}
+
     .back-link{display:inline-block;color:#00C9FF;text-decoration:none;margin-bottom:20px;font-weight:600}
+    
     .game-header{background:linear-gradient(rgba(10,5,25,.7),rgba(10,5,25,.9)),linear-gradient(45deg,#8A2BE2,#00C9FF);border-radius:24px;padding:36px;margin-bottom:36px;text-align:center;box-shadow:0 12px 40px rgba(138,43,226,.4)}
     .game-header h1{font-size:38px;margin-bottom:10px;color:white}
     .game-meta{font-size:16px;color:#d0d0ff}
@@ -66,10 +76,12 @@
     .game-description h2{margin-bottom:12px;background:var(--a);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:22px}
     .game-description p{line-height:1.6;color:var(--s)}
     .game-sidebar{background:var(--g);border:1px solid var(--b);border-radius:20px;padding:22px;backdrop-filter:blur(10px);margin-bottom:28px}
+
     .btn{display:block;width:100%;padding:13px;background:rgba(138,43,226,.2);border:1px solid rgba(138,43,226,.4);color:white;text-align:center;text-decoration:none;border-radius:16px;font-weight:700;margin-top:14px;transition:all .3s}
     .btn:hover{background:rgba(138,43,226,.35);box-shadow:0 0 16px var(--glow)}
     .pay-btn{background:rgba(0,201,255,.2);border-color:rgba(0,201,255,.4);}
     .pay-btn:hover{background:rgba(0,201,255,.35);box-shadow:0 0 16px rgba(0,201,255,.4);}
+
     .login-card{background:var(--g);border:1px solid var(--b);border-radius:24px;padding:30px;max-width:400px;width:100%;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 12px 40px rgba(138,43,226,.35)}
     .login-card h2{text-align:center;margin-bottom:22px;font-size:26px;background:var(--a);-webkit-background-clip:text;background-clip:text;color:transparent}
     .input-group{margin-bottom:18px}
@@ -80,7 +92,12 @@
     .submit-btn:hover{opacity:.9}
     .switch-link{text-align:center;margin-top:14px;color:var(--s)}
     .switch-link a{color:#00C9FF;text-decoration:none;font-weight:600}
+
+    .sysreq h3{margin:14px 0 8px;font-size:18px;color:var(--t)}
+    .sysreq p{margin:6px 0;line-height:1.5;font-size:14px;}
+
     footer{text-align:center;padding:40px 24px 20px;color:#8a8ac0;font-size:13px;margin-top:30px}
+
     @media (max-width:768px){
       body{padding-top:70px}
       header{padding:12px;flex-wrap:wrap;gap:10px}
@@ -109,22 +126,75 @@
     </div>
   </header>
 
-  <!-- Страница игры -->
-  <div id="game-page">
+  <!-- Страницы игр -->
+  <div id="cyberpunk">
     <div class="container">
       <a href="#home" class="back-link">← Назад в магазин</a>
       <div class="game-header">
-        <h1>Neon Horizon</h1>
-        <div class="game-meta">Quantum Labs · Киберпанк / Экшен · 2025</div>
+        <h1>Cyberpunk 2077</h1>
+        <div class="game-meta">CD Projekt RED · RPG / Экшен · 10 декабря 2020</div>
       </div>
       <div class="game-description">
         <h2>Описание</h2>
-        <p>Погрузитесь в будущее, где неоновые огни никогда не гаснут. Вы — наёмник в мегаполисе Нова-Сити, где корпорации правят миром, а реальность стирается между цифровым и физическим.</p>
+        <p>Погрузитесь в мрачное будущее в огромном мегаполисе Найт-Сити, где власть, роскошь и модификации тела — норма. Вы — наёмник V, идущий к вершине славы.</p>
+      </div>
+      <div class="sysreq">
+        <h3>Системные требования (ПК)</h3>
+        <p><strong>Минимальные:</strong><br>OS: Windows 10 (64-bit)<br>Процессор: Intel Core i5-3570K / AMD FX-8310<br>Оперативная память: 8 GB<br>Видеокарта: NVIDIA GTX 780 / AMD Radeon RX 470<br>Место на диске: 70 GB</p>
+        <p><strong>Рекомендуемые:</strong><br>OS: Windows 10 (64-bit)<br>Процессор: Intel Core i7-4790 / AMD Ryzen 3 3200G<br>Оперативная память: 12 GB<br>Видеокарта: NVIDIA GTX 1060 6GB / AMD Radeon RX 590<br>Место на диске: 70 GB SSD</p>
       </div>
       <div class="game-sidebar">
-        <div class="price-full" style="font-size:30px;font-weight:800;background:var(--a);-webkit-background-clip:text;background-clip:text;color:transparent;margin:18px 0">1 299 ₽</div>
-        <a href="#cart" class="btn" onclick="addToCartAndGo('nh')">Добавить в корзину</a>
-        <div class="btn" onclick="toggleWishlist('nh')" style="background:rgba(255,64,129,.15);border-color:rgba(255,64,129,.4);cursor:pointer">В избранное</div>
+        <div class="price-full" style="font-size:30px;font-weight:800;background:var(--a);-webkit-background-clip:text;background-clip:text;color:transparent;margin:18px 0">2 499 ₽</div>
+        <a href="#cart" class="btn" onclick="addToCartAndGo('cyberpunk')">Добавить в корзину</a>
+        <div class="btn" onclick="toggleWishlist('cyberpunk')" style="background:rgba(255,64,129,.15);border-color:rgba(255,64,129,.4);cursor:pointer">В избранное</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="eldenring">
+    <div class="container">
+      <a href="#home" class="back-link">← Назад в магазин</a>
+      <div class="game-header">
+        <h1>Elden Ring</h1>
+        <div class="game-meta">FromSoftware · RPG / Экшен · 25 февраля 2022</div>
+      </div>
+      <div class="game-description">
+        <h2>Описание</h2>
+        <p>Легендарный экшен-RPG от создателей Dark Souls и Сэма Ханниги. Исследуйте огромный мир, сражайтесь с богами и раскройте тайну Пламени Элден.</p>
+      </div>
+      <div class="sysreq">
+        <h3>Системные требования (ПК)</h3>
+        <p><strong>Минимальные:</strong><br>OS: Windows 10 (64-bit)<br>Процессор: Intel Core i5-8400 / AMD Ryzen 3 3300X<br>Оперативная память: 12 GB<br>Видеокарта: NVIDIA GTX 1060 3GB / AMD Radeon RX 580 4GB<br>Место на диске: 60 GB</p>
+        <p><strong>Рекомендуемые:</strong><br>OS: Windows 10/11 (64-bit)<br>Процессор: Intel Core i7-8700K / AMD Ryzen 5 3600X<br>Оперативная память: 16 GB<br>Видеокарта: NVIDIA GTX 1070 8GB / AMD RX Vega 56 8GB<br>Место на диске: 60 GB SSD</p>
+      </div>
+      <div class="game-sidebar">
+        <div class="price-full" style="font-size:30px;font-weight:800;background:var(--a);-webkit-background-clip:text;background-clip:text;color:transparent;margin:18px 0">3 299 ₽</div>
+        <a href="#cart" class="btn" onclick="addToCartAndGo('eldenring')">Добавить в корзину</a>
+        <div class="btn" onclick="toggleWishlist('eldenring')" style="background:rgba(255,64,129,.15);border-color:rgba(255,64,129,.4);cursor:pointer">В избранное</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="starfield">
+    <div class="container">
+      <a href="#home" class="back-link">← Назад в магазин</a>
+      <div class="game-header">
+        <h1>Starfield</h1>
+        <div class="game-meta">Bethesda Game Studios · RPG / Экшен · 6 сентября 2023</div>
+      </div>
+      <div class="game-description">
+        <h2>Описание</h2>
+        <p>Первый новый вселенский RPG от создателей The Elder Scrolls и Fallout за 25 лет. Исследуйте более 1000 планет в поисках человеческого будущего за пределами Солнечной системы.</p>
+      </div>
+      <div class="sysreq">
+        <h3>Системные требования (ПК)</h3>
+        <p><strong>Минимальные:</strong><br>OS: Windows 10/11 (64-bit)<br>Процессор: AMD Ryzen 5 2600X / Intel Core i7-6800K<br>Оперативная память: 16 GB<br>Видеокарта: AMD Radeon RX 5700 / NVIDIA GTX 1070 Ti<br>Место на диске: 125 GB</p>
+        <p><strong>Рекомендуемые:</strong><br>OS: Windows 10/11 (64-bit)<br>Процессор: AMD Ryzen 7 3800X / Intel i5-10600K<br>Оперативная память: 32 GB<br>Видеокарта: AMD Radeon RX 6800 XT / NVIDIA RTX 3080<br>Место на диске: 125 GB SSD</p>
+      </div>
+      <div class="game-sidebar">
+        <div class="price-full" style="font-size:30px;font-weight:800;background:var(--a);-webkit-background-clip:text;background-clip:text;color:transparent;margin:18px 0">3 999 ₽</div>
+        <a href="#cart" class="btn" onclick="addToCartAndGo('starfield')">Добавить в корзину</a>
+        <div class="btn" onclick="toggleWishlist('starfield')" style="background:rgba(255,64,129,.15);border-color:rgba(255,64,129,.4);cursor:pointer">В избранное</div>
       </div>
     </div>
   </div>
@@ -176,6 +246,54 @@
     </div>
     <h2 class="section-title">Популярные игры</h2>
     <div class="games-grid" id="games-container">
+      <div class="game-card" data-id="cyberpunk">
+        <a href="#cyberpunk" style="text-decoration:none;color:inherit;display:block">
+          <div class="game-img cp">Cyberpunk 2077</div>
+          <div class="rating">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star">★</span>
+          </div>
+          <div class="game-title">Cyberpunk 2077</div>
+          <div class="price">2 499 ₽</div>
+        </a>
+        <div class="status-badge" id="cyberpunk-status"></div>
+        <div class="wishlist-btn" id="cyberpunk-wish-btn" title="В избранное"></div>
+      </div>
+      <div class="game-card" data-id="eldenring">
+        <a href="#eldenring" style="text-decoration:none;color:inherit;display:block">
+          <div class="game-img er">Elden Ring</div>
+          <div class="rating">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+          </div>
+          <div class="game-title">Elden Ring</div>
+          <div class="price">3 299 ₽</div>
+        </a>
+        <div class="status-badge" id="eldenring-status"></div>
+        <div class="wishlist-btn" id="eldenring-wish-btn" title="В избранное"></div>
+      </div>
+      <div class="game-card" data-id="starfield">
+        <a href="#starfield" style="text-decoration:none;color:inherit;display:block">
+          <div class="game-img st">Starfield</div>
+          <div class="rating">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star">★</span>
+          </div>
+          <div class="game-title">Starfield</div>
+          <div class="price">3 999 ₽</div>
+        </a>
+        <div class="status-badge" id="starfield-status"></div>
+        <div class="wishlist-btn" id="starfield-wish-btn" title="В избранное"></div>
+      </div>
       <div class="game-card" data-id="nh">
         <a href="#game-page" style="text-decoration:none;color:inherit;display:block">
           <div class="game-img nh">Neon Horizon</div>
@@ -192,28 +310,24 @@
         <div class="status-badge" id="nh-status"></div>
         <div class="wishlist-btn" id="nh-wish-btn" title="В избранное"></div>
       </div>
-      <div class="game-card" data-id="sf">
-        <div class="game-img sf">Starfall</div>
-        <div class="rating">
-          <span class="star filled">★</span>
-          <span class="star filled">★</span>
-          <span class="star filled">★</span>
-          <span class="star filled">★</span>
-          <span class="star filled">★</span>
-        </div>
-        <div class="game-title">Starfall: Echoes</div>
-        <div class="price">899 ₽</div>
-        <div class="status-badge" id="sf-status"></div>
-        <div class="wishlist-btn" id="sf-wish-btn" title="В избранное"></div>
-      </div>
     </div>
   </div>
 
   <footer>© 2025 Miloshin Store — цифровой магазин будущего</footer>
 
   <script>
-    const PRICES = { nh: 1299, sf: 899 };
-    const GAME_NAMES = { nh: "Neon Horizon", sf: "Starfall: Echoes" };
+    const PRICES = { 
+      nh: 1299, 
+      cyberpunk: 2499,
+      eldenring: 3299,
+      starfield: 3999
+    };
+    const GAME_NAMES = { 
+      nh: "Neon Horizon",
+      cyberpunk: "Cyberpunk 2077",
+      eldenring: "Elden Ring",
+      starfield: "Starfield"
+    };
 
     function filterGames() {
       const q = document.getElementById('search').value.toLowerCase();
@@ -244,15 +358,9 @@
         if (cart.includes(id)) {
           badge.innerText = 'В корзине';
           badge.style.display = 'block';
-          badge.style.background = 'rgba(0,201,255,.2)';
-          badge.style.borderColor = 'rgba(0,201,255,.4)';
-          badge.style.color = '#00c9ff';
         } else if (wishlist.includes(id)) {
           badge.innerText = 'В избранном';
           badge.style.display = 'block';
-          badge.style.background = 'rgba(255,64,129,.2)';
-          badge.style.borderColor = 'rgba(255,64,129,.4)';
-          badge.style.color = '#ff4081';
         }
       });
 
@@ -264,7 +372,7 @@
         div.className = 'game-card';
         div.style.width = '100%';
         div.innerHTML = `
-          <div class="game-img ${id}">${GAME_NAMES[id] || id}</div>
+          <div class="game-img ${id === 'cyberpunk' ? 'cp' : id === 'eldenring' ? 'er' : id === 'starfield' ? 'st' : 'nh'}">${GAME_NAMES[id]}</div>
           <div class="game-title">${GAME_NAMES[id]}</div>
           <div class="price">${PRICES[id]} ₽</div>
         `;
@@ -288,7 +396,7 @@
         div.style.width = '100%';
         div.style.position = 'relative';
         div.innerHTML = `
-          <div class="game-img ${id}">${id.toUpperCase()}</div>
+          <div class="game-img ${id === 'cyberpunk' ? 'cp' : id === 'eldenring' ? 'er' : id === 'starfield' ? 'st' : 'nh'}">${GAME_NAMES[id].split(' ')[0]}</div>
           <div class="game-title">${GAME_NAMES[id]}</div>
           <div class="price">${price} ₽</div>
           <div class="remove-from-cart" data-id="${id}" style="
