@@ -35,27 +35,10 @@
     .search-box input:focus{width:220px;border-color:#8A2BE2;box-shadow:0 0 12px var(--glow)}
     .search-box::before{content:"🔍";position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#b0b0e0;font-size:14px}
     .container{max-width:1300px;margin:0 auto;padding:0 24px}
-
-    /* === НОВАЯ СИСТЕМА НАВИГАЦИИ === */
-    .page {
-      display: none;
-      padding: 24px 0;
-    }
-    #home {
-      display: block;
-    }
-    :target {
-      display: flex !important;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: calc(100vh - 80px);
-      padding: 0 24px;
-    }
-    :target ~ #home {
-      display: none !important;
-    }
-
+    #game-page,#cart,#login,#wishlist,#history{display:none;padding:24px 0}
+    #game-page:target,#cart:target,#login:target,#wishlist:target,#history:target{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);padding:0 24px}
+    .home{display:block}
+    #game-page:target~.home,#cart:target~.home,#login:target~.home,#wishlist:target~.home,#history:target~.home{display:none}
     .hero{text-align:center;margin:40px 0 50px}
     .hero h1{font-size:48px;margin-bottom:16px;background:linear-gradient(90deg,#fff,#a0d0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero p{font-size:18px;max-width:600px;margin:0 auto;color:var(--s)}
@@ -97,6 +80,10 @@
     .submit-btn:hover{opacity:.9}
     .switch-link{text-align:center;margin-top:14px;color:var(--s)}
     .switch-link a{color:#00C9FF;text-decoration:none;font-weight:600}
+    .history-item{background:var(--g);border:1px solid var(--b);border-radius:18px;padding:16px;margin-bottom:16px;backdrop-filter:blur(10px)}
+    .history-date{color:#a0a0d0;font-size:14px;margin-bottom:8px;}
+    .history-games{display:flex;flex-wrap:wrap;gap:10px;}
+    .history-game{background:rgba(255,255,255,0.08);padding:6px 10px;border-radius:12px;font-size:14px;}
     footer{text-align:center;padding:40px 24px 20px;color:#8a8ac0;font-size:13px;margin-top:30px}
     @media (max-width:768px){
       body{padding-top:70px}
@@ -115,6 +102,7 @@
     <div class="logo">Miloshin Store</div>
     <nav>
       <a href="#home">Главная</a>
+      <a href="#history">История</a>
       <a href="#wishlist">Избранное</a>
       <a href="#cart">Корзина</a>
     </nav>
@@ -126,8 +114,81 @@
     </div>
   </header>
 
-  <!-- Главная СТРОГО ПЕРВОЙ -->
-  <div id="home" class="container page">
+  <!-- Страница игры -->
+  <div id="game-page">
+    <div class="container">
+      <a href="#home" class="back-link">← Назад в магазин</a>
+      <div class="game-header">
+        <h1>Neon Horizon</h1>
+        <div class="game-meta">Quantum Labs · Киберпанк / Экшен · 2025</div>
+      </div>
+      <div class="game-description">
+        <h2>Описание</h2>
+        <p>Погрузитесь в будущее, где неоновые огни никогда не гаснут. Вы — наёмник в мегаполисе Нова-Сити, где корпорации правят миром, а реальность стирается между цифровым и физическим.</p>
+      </div>
+      <div class="game-sidebar">
+        <div class="price-full" style="font-size:30px;font-weight:800;background:var(--a);-webkit-background-clip:text;background-clip:text;color:transparent;margin:18px 0">1 299 ₽</div>
+        <a href="#cart" class="btn" onclick="addToCartAndGo('nh')">Добавить в корзину</a>
+        <div class="btn" onclick="toggleWishlist('nh')" style="background:rgba(255,64,129,.15);border-color:rgba(255,64,129,.4);cursor:pointer">В избранное</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Корзина -->
+  <div id="cart">
+    <div class="container">
+      <a href="#home" class="back-link">← Продолжить покупки</a>
+      <h1 class="section-title" style="margin-top:0">Ваша корзина</h1>
+      <div id="cart-content"></div>
+      <div id="cart-empty" style="text-align:center;color:#b0b0e0;margin:30px 0;display:none">Корзина пуста</div>
+      <div id="total-price" style="font-size:22px;margin:22px 0;text-align:right;display:none">Итого: <span id="total-amount">0 ₽</span></div>
+      <a href="https://t.me/tgbocc" class="btn pay-btn" target="_blank" id="pay-btn" style="display:none" onclick="savePurchase()">Оплатить через Telegram</a>
+    </div>
+  </div>
+
+  <!-- Вход -->
+  <div id="login">
+    <div class="login-card">
+      <h2>Вход в аккаунт</h2>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@miloshin.store">
+      </div>
+      <div class="input-group">
+        <label for="password">Пароль</label>
+        <input type="password" id="password" placeholder="••••••••">
+      </div>
+      <button class="submit-btn">Войти</button>
+      <div class="switch-link">Нет аккаунта? <a href="#">Зарегистрироваться</a></div>
+    </div>
+  </div>
+
+  <!-- Избранное -->
+  <div id="wishlist">
+    <div class="container">
+      <a href="#home" class="back-link">← Назад</a>
+      <h1 class="section-title" style="margin-top:0">Список желаемого</h1>
+      <div id="wishlist-content"></div>
+      <div id="wishlist-empty" style="text-align:center;color:#b0b0e0;margin:30px 0;display:block">Список пуст</div>
+    </div>
+  </div>
+
+  <!-- История покупок -->
+  <div id="history" class="page">
+    <div class="container">
+      <a href="#home" class="back-link">← Назад</a>
+      <h1 class="section-title" style="margin-top:0">История покупок</h1>
+      <div id="history-content">
+        <!-- История будет подгружаться сюда -->
+      </div>
+      <div id="history-empty" style="text-align:center;color:#b0b0e0;margin:30px 0;display:block">
+        Покупок пока нет.
+      </div>
+    </div>
+  </div>
+
+  <!-- Главная -->
+  <div id="home" class="container home">
     <div class="hero">
       <h1>Добро пожаловать в Miloshin Store</h1>
       <p>Яркие, захватывающие игры в самом красивом цифровом магазине. Будущее уже здесь.</p>
@@ -167,62 +228,6 @@
     </div>
   </div>
 
-  <!-- Остальные страницы ПОСЛЕ -->
-  <div id="game-page" class="page">
-    <div class="container">
-      <a href="#home" class="back-link">← Назад в магазин</a>
-      <div class="game-header">
-        <h1>Neon Horizon</h1>
-        <div class="game-meta">Quantum Labs · Киберпанк / Экшен · 2025</div>
-      </div>
-      <div class="game-description">
-        <h2>Описание</h2>
-        <p>Погрузитесь в будущее, где неоновые огни никогда не гаснут...</p>
-      </div>
-      <div class="game-sidebar">
-        <div class="price-full" style="font-size:30px;font-weight:800;background:var(--a);-webkit-background-clip:text;background-clip:text;color:transparent;margin:18px 0">1 299 ₽</div>
-        <a href="#cart" class="btn" onclick="addToCartAndGo('nh')">Добавить в корзину</a>
-        <div class="btn" onclick="toggleWishlist('nh')" style="background:rgba(255,64,129,.15);border-color:rgba(255,64,129,.4);cursor:pointer">В избранное</div>
-      </div>
-    </div>
-  </div>
-
-  <div id="cart" class="page">
-    <div class="container">
-      <a href="#home" class="back-link">← Продолжить покупки</a>
-      <h1 class="section-title" style="margin-top:0">Ваша корзина</h1>
-      <div id="cart-content"></div>
-      <div id="cart-empty" style="text-align:center;color:#b0b0e0;margin:30px 0;display:none">Корзина пуста</div>
-      <div id="total-price" style="font-size:22px;margin:22px 0;text-align:right;display:none">Итого: <span id="total-amount">0 ₽</span></div>
-      <a href="https://t.me/tgbocc" class="btn pay-btn" target="_blank" id="pay-btn" style="display:none">Оплатить через Telegram</a>
-    </div>
-  </div>
-
-  <div id="login" class="page">
-    <div class="login-card">
-      <h2>Вход в аккаунт</h2>
-      <div class="input-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="you@miloshin.store">
-      </div>
-      <div class="input-group">
-        <label for="password">Пароль</label>
-        <input type="password" id="password" placeholder="••••••••">
-      </div>
-      <button class="submit-btn">Войти</button>
-      <div class="switch-link">Нет аккаунта? <a href="#">Зарегистрироваться</a></div>
-    </div>
-  </div>
-
-  <div id="wishlist" class="page">
-    <div class="container">
-      <a href="#home" class="back-link">← Назад</a>
-      <h1 class="section-title" style="margin-top:0">Список желаемого</h1>
-      <div id="wishlist-content"></div>
-      <div id="wishlist-empty" style="text-align:center;color:#b0b0e0;margin:30px 0;display:block">Список пуст</div>
-    </div>
-  </div>
-
   <footer>© 2025 Miloshin Store — цифровой магазин будущего</footer>
 
   <script>
@@ -246,10 +251,34 @@
       localStorage.setItem(key, JSON.stringify(data));
     }
 
+    // === СОХРАНЕНИЕ ПОКУПКИ ===
+    function savePurchase() {
+      const cart = getStorage('cart');
+      if (cart.length === 0) return;
+
+      const purchase = {
+        id: Date.now(),
+        date: new Date().toLocaleString('ru-RU'),
+        items: [...cart],
+        total: cart.reduce((sum, id) => sum + (PRICES[id] || 0), 0)
+      };
+
+      const history = getStorage('purchaseHistory');
+      history.push(purchase);
+      saveStorage('purchaseHistory', history);
+
+      // Очистим корзину после покупки
+      saveStorage('cart', []);
+      updateUI();
+    }
+
+    // === ОБНОВЛЕНИЕ ИНТЕРФЕЙСА ===
     function updateUI() {
       const wishlist = getStorage('wishlist');
       const cart = getStorage('cart');
+      const history = getStorage('purchaseHistory');
 
+      // Статусы на главной
       document.querySelectorAll('.game-card').forEach(card => {
         const id = card.dataset.id;
         const badge = document.getElementById(id + '-status');
@@ -264,6 +293,7 @@
         }
       });
 
+      // Избранное
       const wishList = document.getElementById('wishlist-content');
       const wishEmpty = document.getElementById('wishlist-empty');
       wishList.innerHTML = '';
@@ -272,7 +302,7 @@
         div.className = 'game-card';
         div.style.width = '100%';
         div.innerHTML = `
-          <div class="game-img ${id}">${GAME_NAMES[id] || id}</div>
+          <div class="game-img ${id}">${GAME_NAMES[id]}</div>
           <div class="game-title">${GAME_NAMES[id]}</div>
           <div class="price">${PRICES[id]} ₽</div>
         `;
@@ -280,6 +310,7 @@
       });
       wishEmpty.style.display = wishlist.length ? 'none' : 'block';
 
+      // Корзина
       const cartContent = document.getElementById('cart-content');
       const cartEmpty = document.getElementById('cart-empty');
       const totalEl = document.getElementById('total-price');
@@ -330,6 +361,31 @@
         payBtn.style.display = 'none';
       }
 
+      // История покупок
+      const historyContent = document.getElementById('history-content');
+      const historyEmpty = document.getElementById('history-empty');
+      historyContent.innerHTML = '';
+      if (history.length > 0) {
+        historyEmpty.style.display = 'none';
+        // Сортируем от новых к старым
+        history.reverse().forEach(purchase => {
+          const div = document.createElement('div');
+          div.className = 'history-item';
+          const gamesHtml = purchase.items.map(id => 
+            `<span class="history-game">${GAME_NAMES[id]}</span>`
+          ).join('');
+          div.innerHTML = `
+            <div class="history-date">${purchase.date}</div>
+            <div class="history-games">${gamesHtml}</div>
+            <div style="color:#00c9ff;font-weight:bold;margin-top:6px">Итого: ${purchase.total} ₽</div>
+          `;
+          historyContent.appendChild(div);
+        });
+      } else {
+        historyEmpty.style.display = 'block';
+      }
+
+      // Кнопки избранного
       document.querySelectorAll('.wishlist-btn').forEach(btn => {
         const id = btn.closest('.game-card')?.dataset.id;
         if (id && wishlist.includes(id)) {
@@ -340,6 +396,7 @@
       });
     }
 
+    // === ОСТАЛЬНЫЕ ФУНКЦИИ ===
     function toggleWishlist(id) {
       let wishlist = getStorage('wishlist');
       const index = wishlist.indexOf(id);
